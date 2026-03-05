@@ -12,7 +12,7 @@ const displayLesson = (data) => {
     lessonContainer.innerHTML = "";
     for (let lesson of data){
         const btnDiv = document.createElement("div");
-        console.log(lesson);
+    
         btnDiv.innerHTML = `<button onclick="loadLevelWord(${lesson.level_no})" id="lesson-${lesson.level_no}" class="btn btn-outline btn-primary"><i class="fa-solid fa-book-open"></i>Lesson - ${lesson.level_no}</button>`;
         lessonContainer.append(btnDiv);
     }
@@ -33,7 +33,7 @@ loadLessons();
 const loadLevelWord = (id) => {
     manageSpinner(true);
     const selectedBtn = document.getElementById(`lesson-${id}`);
-    console.log(selectedBtn);
+ 
     document.querySelectorAll(".active").forEach((btn) => btn.classList.remove("active"));
     selectedBtn.classList.add("active");
     const url = `https://openapi.programming-hero.com/api/level/${id}`;
@@ -51,6 +51,10 @@ const displayWords = (words) => {
           <h1 class="bangla-font">আপনি এখনো কোন Lesson Select করেন নি</h1>
           <p class="text-2xl">একটি Lesson Select করুন।</p>
         </div>`;
+        manageSpinner(false);
+
+
+
     }
     for (let word of words){
         console.log(word.word);
@@ -107,3 +111,15 @@ const displayWordDetail = (word) => {
     document.getElementById("word_modal").showModal();
 };
 
+document.getElementById("search-btn").addEventListener("click",() =>{
+    document.querySelectorAll(".active").forEach((btn) => btn.classList.remove("active"));
+    const key = document.getElementById("search-key").value.trim().toLowerCase();
+   
+    fetch("https://openapi.programming-hero.com/api/words/all")
+    .then((res) => res.json())
+    .then((data) => {const words = data.data
+        const foundWords =  words.filter((word) => word.word.toLowerCase().includes(key));
+        displayWords(foundWords);
+    });
+    
+});

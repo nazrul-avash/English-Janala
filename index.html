@@ -77,9 +77,31 @@
     </section>
     <section>
       <h1 class="text-3xl text-center mb-5"><span class="text-blue-400">Let's</span> Learn Vocabularies</h1>
-      <div id="level-container" class="flex gap-3 justify-center flex-wrap">
+      <div id="level-container" class="flex gap-3 justify-center flex-wrap mb-5">
 
       </div>
+  <div class="join flex justify-center">
+  <div>
+    <label class="input validator join-item ">
+      <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <g
+          stroke-linejoin="round"
+          stroke-linecap="round"
+          stroke-width="2.5"
+          fill="none"
+          stroke="currentColor"
+        >
+          <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+        </g>
+      </svg>
+      <input type="text" id="search-key" placeholder="find words" class="flex justify-center text-center" required />
+    </label>
+    <div class="validator-hint hidden">Find Words</div>
+  </div>
+  <button id="search-btn" class="btn btn-neutral join-item">Search</button>
+</div>
+    
     </section>
     <section id="spinner" class="flex justify-center items-center py-10 hidden">
       <span class="loading loading-bars loading-xl"></span>
